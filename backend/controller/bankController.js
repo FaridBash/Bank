@@ -92,6 +92,55 @@ const updateCustomerCashWithdraw=asyncHandler( async (req, res)=>{
         });
     
         res.status(200).json(updatedCustomerCashWithdraw)
+    }else{
+        if(!customer){
+            res.status(400)
+            throw new Error('Customer NOT FOUND');
+        }
+    }
+})
+const updateCashWithPassport=asyncHandler( async (req, res)=>{
+    
+    const customer=await Customers.find({passportID: req.body.passportID});
+    console.log(customer);
+    console.log("customer.cash",customer[0].cash);
+    if(customer[0]){
+        console.log('req.body.cash',req.body.cash);
+        console.log('customer.cash',customer[0].cash);
+        const totAferUpdate=Number(customer[0].cash)+Number(req.body.cash);
+        console.log('totAfterDeposit',totAferUpdate);
+        const updatedCustomerCashUpdate=await Customers.findOneAndUpdate({passportID: req.body.passportID}, {cash: totAferUpdate}, {
+            new: true,
+        });
+    
+        res.status(200).json(updatedCustomerCashUpdate)
+    }else{
+        if(!customer){
+            res.status(400)
+            throw new Error('Customer NOT FOUND');
+        }
+    }
+})
+const updateWithdrawalWithPassport=asyncHandler( async (req, res)=>{
+    
+    const customer=await Customers.find({passportID: req.body.passportID});
+    console.log(customer);
+    console.log("customer.cash",customer[0].cash);
+    if(customer[0]){
+        console.log('req.body.cash',req.body.cash);
+        console.log('customer.cash',customer[0].cash);
+        const totAferUpdate=Number(customer[0].cash)-Number(req.body.cash);
+        console.log('totAfterDeposit',totAferUpdate);
+        const updatedCustomerCashUpdate=await Customers.findOneAndUpdate({passportID: req.body.passportID}, {cash: totAferUpdate}, {
+            new: true,
+        });
+    
+        res.status(200).json(updatedCustomerCashUpdate)
+    }else{
+        if(!customer){
+            res.status(400)
+            throw new Error('Customer NOT FOUND');
+        }
     }
 })
 
@@ -121,4 +170,6 @@ module.exports={
     updateCustomerCash,
     getCustomersById,
     updateCustomerCashWithdraw,
+    updateCashWithPassport,
+    updateWithdrawalWithPassport
 }
