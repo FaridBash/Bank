@@ -1,10 +1,12 @@
 const express=require('express');
 const router=express.Router();
-const {getCustomers, setCustomer, updateCustomer, deleteCustomer}=require('../controller/bankController');
+const {getCustomers,getCustomersById ,setCustomer, updateCustomer, deleteCustomer, updateCustomerCash, updateCustomerCashWithdraw}=require('../controller/bankController');
 
 
 router.route('/').get(getCustomers).post(setCustomer);
-router.route('/:id').delete(deleteCustomer).put(updateCustomer);
+router.route('/:id').delete(deleteCustomer).put(updateCustomer).get(getCustomersById);
+router.route('/:id/cashDeposit').put(updateCustomerCash)
+router.route('/:id/cashwithdraw').put(updateCustomerCashWithdraw)
 
 
 // router.get('/', getCustomers);

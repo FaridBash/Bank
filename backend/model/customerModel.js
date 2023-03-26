@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const { boolean } = require('yargs');
 
 const customerSchema=mongoose.Schema({
     passportID: {
@@ -17,6 +18,7 @@ const customerSchema=mongoose.Schema({
         type: Number,
         required:[true, 'Please enter credit']
     },
+    
 },
  {
     timestamps: true,
