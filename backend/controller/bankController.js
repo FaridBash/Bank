@@ -144,6 +144,38 @@ const updateWithdrawalWithPassport=asyncHandler( async (req, res)=>{
     }
 })
 
+
+const transerMoney=asyncHandler( async (req, res)=>{
+
+    const originCustomer=await Customers.findById(req.params.id);
+    const amountToTrans=Number(req.body.cash);
+    if(originCustomer){
+        const customerToTransTo=await Customers.find({passportID: req.body.passportID});
+        if(customerToTransTo[0]){
+            const totalAfterTrans=Number(customerToTransTo[0].cash)+amountToTrans;
+            const updatedCustomer2Cash=await Customers.findOneAndUpdate({passportID: req.body.passportID}, {cash: totalAfterTrans}, {
+                new: true,
+            });
+           
+            const originUpdatedCash=Number(originCustomer.cash)-Number(req.body.cash);
+            const updatedOriginCustomerCash=await Customers.findByIdAndUpdate(req.params.id, {cash: originUpdatedCash}, {
+                new: true,
+            });
+            console.log('totalAfterTrans',totalAfterTrans, 'customerToTransTo[0]', customerToTransTo[0]);
+            console.log('originUpdatedCash',originUpdatedCash, 'originCustomer', originCustomer);
+            res.status(200).json(updatedOriginCustomerCash)
+        }else if(!customerToTransTo[0]){
+            res.status(400)
+                throw new Error('Customer NOT FOUND');
+        }
+    }else if(!originCustomer){
+        res.status(400)
+            throw new Error('Customer NOT FOUND');
+    }
+
+
+})
+
 //@desc Delete Customer
 //@route DELETE /api/customers/:id/cash
 //@access Private
@@ -171,5 +203,6 @@ module.exports={
     getCustomersById,
     updateCustomerCashWithdraw,
     updateCashWithPassport,
-    updateWithdrawalWithPassport
+    updateWithdrawalWithPassport,
+    transerMoney,
 }
