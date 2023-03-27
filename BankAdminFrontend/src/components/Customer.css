@@ -30,3 +30,22 @@
     font-size: 7px;
     justify-content: space-between;
 }
+
+ul{
+    width: 80%;
+    margin: 0;
+    margin-left: -2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.myLinks{
+    font-size: 10px;
+    border: 1px solid white;
+    padding: 0.2rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+
+    
+}
