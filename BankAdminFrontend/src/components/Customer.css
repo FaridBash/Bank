@@ -1,0 +1,32 @@
+
+
+
+#customer-container{
+    width: 10rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+    margin-left: 3rem;
+    padding: 1rem;
+    text-align: left;
+    font-size: 15px;
+    border-radius: 15px;
+}
+
+#customer-container span{
+    color: green;
+}
+
+#customer-container h3{
+    margin: 0;
+    font-size: 20px;
+}
+
+
+#account-control{
+    width: 100%;
+    display: flex;
+    font-size: 7px;
+    justify-content: space-between;
+}
