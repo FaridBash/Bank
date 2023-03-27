@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider, useNavigate } from "react-router-d
 import Home from "./pages/HomePage";
 import Withdraw from "./pages/Withdraw";
 import Transfer from "./pages/Transfer";
+import NewCustomer from "./pages/NewCustomer";
 
 
 const route = createBrowserRouter([
@@ -27,6 +28,10 @@ const route = createBrowserRouter([
   {
     path: "/Transfer",
     element: <Transfer/>,    
+  },
+  {
+    path: "/NewCustomer",
+    element: <NewCustomer/>,    
   },
  
 ]);

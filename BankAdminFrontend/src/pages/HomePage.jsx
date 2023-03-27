@@ -2,9 +2,9 @@
 import './HomePage.css'
 import { useEffect, useState } from "react";
 import Customer from '../components/Customer';
-
+import { useNavigate } from "react-router-dom";
 export default function Home(){
-
+  const navigate = useNavigate();
     const [customers, setCustomers] = useState(undefined);
 
     useEffect(() => {
@@ -33,7 +33,9 @@ export default function Home(){
       <div className="App">
         
         <h1>Bank</h1>
-  
+        <div id='control'>
+          <button onClick={()=>{navigate('/NewCustomer')}}>New Customer</button>
+        </div>
         <div id="accounts-container">
         { Array.isArray(customers) &&
           customers.map((c) => {

@@ -17,9 +17,20 @@ export default function Customer(props){
         <div id='account-control'>
         
             <ul>
+
             <NavLink className='myLinks' to={'/Deposit'} state={props.pass} >Deposit</NavLink>
-            <NavLink className='myLinks' to={'/Withdrawl'} state={props.pass} >Withdraw</NavLink>
-            <NavLink className='myLinks' to={'/Transfer'} state={props.pass} >Transfer</NavLink>
+            
+            {props.cash > 0 ? (
+         <NavLink className='myLinks' to={'/Withdrawl'} state={props.pass} >Withdraw</NavLink>
+        ) : (
+          <p className='myLinks'>Withdraw</p>
+        )}
+            {props.cash > 0 ? (
+          <NavLink className='myLinks' to={'/Transfer'} state={props.pass} >Transfer</NavLink>
+        ) : (
+          <p className='myLinks'>Transfer</p>
+        )}
+           
             
             </ul>
         

@@ -1,0 +1,9 @@
+
+
+#control{
+    width: 90%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
