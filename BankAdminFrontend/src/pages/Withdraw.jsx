@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-export default function Deposite(props) {
+export default function Withdraw(props) {
     const navigate = useNavigate();
   let location = useLocation();
   // const location = useLocation()
@@ -19,7 +19,7 @@ export default function Deposite(props) {
     };
     try {
       const response = await fetch(
-        "http://localhost:7878/api/customers/Deposit",
+        "http://localhost:7878/api/customers/withdrawl",
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -38,7 +38,7 @@ export default function Deposite(props) {
 
   return (
     <div>
-      <p>Adding Deposite for</p>
+      <p>Withdrawing for</p>
       <p>{cust.customerName}</p>
       <p>{cust.passportID}</p>
       <input type="number" ref={depoAmountRef} />

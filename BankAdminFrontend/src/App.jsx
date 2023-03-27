@@ -7,6 +7,8 @@ import DepositPopup from "./components/depositPopup";
 import Deposite from "./pages/DepositPage";
 import { createBrowserRouter, RouterProvider, useNavigate } from "react-router-dom";
 import Home from "./pages/HomePage";
+import Withdraw from "./pages/Withdraw";
+import Transfer from "./pages/Transfer";
 
 
 const route = createBrowserRouter([
@@ -17,6 +19,14 @@ const route = createBrowserRouter([
   {
     path: "/Deposit",
     element: <Deposite/>,    
+  },
+  {
+    path: "/Withdrawl",
+    element: <Withdraw/>,    
+  },
+  {
+    path: "/Transfer",
+    element: <Transfer/>,    
   },
  
 ]);

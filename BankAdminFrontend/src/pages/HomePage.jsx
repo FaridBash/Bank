@@ -45,6 +45,7 @@ export default function Home(){
               passport={c.passportID}
               cash={c.cash}
               credit={c.credit}
+              pass={c}
               />
               );
             })}

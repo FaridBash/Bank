@@ -15,13 +15,14 @@ export default function Customer(props){
         <p>Cash in Acc: <span> {props.cash} </span> </p>
         <p>Acc Credit: <span> {props.credit} </span> </p>
         <div id='account-control'>
-        {/* <Router> */}
+        
             <ul>
-            <NavLink className='myLinks' to={props.passport ? {pathname:'/Deposit', state: { passportID: props.passport }} : null}>Deposit</NavLink>
-            {/* <NavLink className='myLinks' to='/'>Withdraw</NavLink>
-            <NavLink className='myLinks' to='/D'>Transfer</NavLink> */}
+            <NavLink className='myLinks' to={'/Deposit'} state={props.pass} >Deposit</NavLink>
+            <NavLink className='myLinks' to={'/Withdrawl'} state={props.pass} >Withdraw</NavLink>
+            <NavLink className='myLinks' to={'/Transfer'} state={props.pass} >Transfer</NavLink>
+            
             </ul>
-        {/* </Router> */}
+        
             
            
             
